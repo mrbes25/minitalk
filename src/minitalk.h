@@ -5,9 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bschmid <bschmid@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/28 08:32:09 by bschmid           #+#    #+#             */
-/*   Updated: 2024/06/28 09:05:41 by bschmid          ###   ########.ch       */
+/*   Created: 2024/08/13 17:07:58 by bschmid           #+#    #+#             */
+/*   Updated: 2024/08/13 17:08:22 by bschmid          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
+#include "./my_lib.h"
