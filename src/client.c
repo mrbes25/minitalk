@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bschmid <bschmid@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/13 15:42:27 by bschmid           #+#    #+#             */
-/*   Updated: 2024/08/13 17:07:27 by bschmid          ###   ########.ch       */
+/*   Created: 2024/08/14 11:50:44 by bschmid           #+#    #+#             */
+/*   Updated: 2024/08/14 11:56:45 by bschmid          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../include/minitalk.h"
 
 void	send_bits(pid_t, char c)
 {
@@ -20,9 +20,9 @@ void	send_bits(pid_t, char c)
 	while (bit < 8)
 	{
 		if ((c & (0x01 << bit)) != 0)
-			kill(pid, SIGUSR1)
+			kill(pid, SIGUSR1);
 		else
-			kill(pid, SIGUSR2)
+			kill(pid, SIGUSR2);
 		usleep(100);
 		bit++;
 	}
@@ -46,6 +46,8 @@ int	main(int argc, char **argv)
 	else
 	{
 		ft_printf("Error: wrong format\n");
-		ft_printf
+		ft_printf("Try: ./client <PID> <MESSAGE>\n");
+		return (1);
 	}
+	return (0);
 }

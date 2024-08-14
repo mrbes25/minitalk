@@ -5,10 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bschmid <bschmid@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/13 17:07:58 by bschmid           #+#    #+#             */
-/*   Updated: 2024/08/13 17:08:22 by bschmid          ###   ########.ch       */
+/*   Created: 2024/08/14 11:40:25 by bschmid           #+#    #+#             */
+/*   Updated: 2024/08/14 11:42:31 by bschmid          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include "./my_lib.h"
+#ifndef MINITALK_H
+# define MINITALK_H
+
+# include "../my_lib/my_lib.h"
+# include <signal.h>
+# include <sys/types.h>
+
+#endif
