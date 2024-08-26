@@ -5,46 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bschmid <bschmid@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 11:25:26 by bschmid           #+#    #+#             */
-/*   Updated: 2024/08/14 11:37:43 by bschmid          ###   ########.ch       */
+/*   Created: 2024/08/26 15:46:30 by bschmid           #+#    #+#             */
+/*   Updated: 2024/08/26 15:46:30 by bschmid          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "../inc/minitalk.h"
 
 void	sig_handler(int sig)
 {
 	static int	bit;
-	static int	il
+	static int	i;
 
 	if (sig == SIGUSR1)
 		i |= (0x01 << bit);
-	bit++;
-	if (bit == 8)
+	if (++bit == 8)
 	{
 		ft_printf("%c", i);
 		bit = 0;
 		i = 0;
 	}
 }
-int	main(int argc, char **argv)
-{
-	pid_t	pid;
 
-	(void)argv; //supress the unudes parameter warning for argv
-	if (argc != 1)
+int	main(int ac, char **av)
+{
+	struct sigaction	sa;
+
+	(void)av;
+	if (ac != 1)
 	{
-		ft_printf("Error: wrong format\n");
-		ft_printf("Try: ./server\n");
+		ft_printf("User Error\n");
+		return (1);
 	}
-	pid = getpid();
-	ft_printf("PID: %d\n", pid);
-	ft_printf("Waiting for a message...\n");
-	while (argc == 1) // infinit loop to wait for signals
-	{
-		signal(SIGUSR1, sig_handler);
-		signal(SIGUSR2, sig_handler);
+	ft_printf("Server PID: %d\n", getpid());
+	sa.sa_handler = sig_handler;
+	sa.sa_flags = 0;
+	sigemptyset(&sa.sa_mask);
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
+	while (1)
 		pause();
-	}
 	return (0);
 }
